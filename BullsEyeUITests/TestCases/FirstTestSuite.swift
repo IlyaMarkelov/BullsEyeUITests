@@ -43,7 +43,7 @@ class FirstTestSuite: TestCase {
     XCTAssertTrue(page.slideButton.isSelected, "По умолчанию активна вкладка Slide")
     
     page.hitMeButton.tap()
-    XCTAssert(page.scoreAlert.exists, "Экран содержить алерт с надписью 'you scored 100 points'")
+    XCTAssertTrue(page.scoreAlert.exists, "Экран содержить алерт с надписью 'you scored 100 points'")
   }
   
   func testtestCheckAlertType() throws {
