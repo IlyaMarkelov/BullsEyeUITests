@@ -35,16 +35,55 @@ class FirstTestSuite: TestCase {
 
   func testCheckAlertSlide() throws {
     
+    if page.typeButton.isSelected {
+      page.slideButton.tap()
+    }
+    
     XCTAssertTrue(page.slideButton.exists, "Экран содержит вкладку Slide")
     XCTAssertTrue(page.slideButton.isSelected, "По умолчанию активна вкладка Slide")
     
     page.hitMeButton.tap()
-    XCTAssert(page.alert.exists, "Экран содержить алерт с надписью 'you scored 100 points'")
+    XCTAssert(page.scoreAlert.exists, "Экран содержить алерт с надписью 'you scored 100 points'")
   }
   
   func testtestCheckAlertType() throws {
     
+    page.typeButton.tap()
+    XCTAssertTrue(page.typeButton.isSelected, "После тапа на вкладку Type, активна вкладка Type")
     
+    page.scoreTextField.tap()
+    page.scoreTextField.typeText("50")
+    
+    page.hitMeButton.tap()
+    XCTAssertTrue(page.scoreAlert.exists, "Экран содержить алерт с надписью 'you scored 100 points'")
   }
-
+  
+    func testCheckErrorAlertType() throws {
+        
+      page.typeButton.tap()
+      XCTAssertTrue(page.typeButton.isSelected, "После тапа на вкладку Type, активна вкладка Type")
+      
+      page.hitMeButton.tap()
+      XCTAssertTrue(page.errorAlert.exists, "Экран содержить алерт с надписью 'Not A Number'")
+    }
+  
+    func testResetPoints() throws {
+      
+      if page.typeButton.isSelected {
+        page.slideButton.tap()
+      }
+      
+      page.hitMeButton.tap()
+      XCTAssertTrue(page.scoreAlert.exists, "Экран содержить алерт с надписью 'you scored 100 points'")
+      
+      page.typeButton.tap()
+      XCTAssertTrue(page.typeButton.isSelected, "После тапа на вкладку Type, активна вкладка Type")
+      
+      XCTAssertTrue(page.secondRound.exists, "Round: 2")
+      XCTAssertTrue(page.scoreAfterFirstRound.exists, "Score: 100")
+      
+      page.startOverButton.tap()
+      XCTAssertTrue(page.firstRound.exists, "Round: 1")
+      XCTAssertTrue(page.initialScore.exists, "Score: 0")
+    }
 }

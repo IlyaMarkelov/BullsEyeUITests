@@ -42,6 +42,22 @@ class BullsEyePageObject {
   
   var hitMeButton: XCUIElement { self.app.buttons["hit me!"] }
 
-  var alert: XCUIElement { self.app.alerts["you scored 100 points"] }
+  var scoreAlert: XCUIElement { self.app.alerts["you scored 100 points"] }
+  
+  var errorAlert: XCUIElement { self.app.alerts["Not A Number"] }
+  
+  var scoreTextField: XCUIElement { self.app.textFields["1-100"] }
+  
+  var secondRound: XCUIElement { self.app.staticTexts["Round: 2"]}
+  
+  var firstRound: XCUIElement { self.app.staticTexts["Round: 1"]}
+  
+  var scoreAfterFirstRound: XCUIElement { self.app.staticTexts["Score: 100"]}
+  
+  var initialScore: XCUIElement { self.app.staticTexts["Score: 0"]}
+  
+  var startOverButton: XCUIElement { self.app.buttons["start over"] }
+
+
 
 }
