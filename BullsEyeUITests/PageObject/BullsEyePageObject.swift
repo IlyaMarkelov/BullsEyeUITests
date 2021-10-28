@@ -48,13 +48,9 @@ class BullsEyePageObject {
   
   var scoreTextField: XCUIElement { self.app.textFields["1-100"] }
   
-  var secondRound: XCUIElement { self.app.staticTexts["Round: 2"]}
+  var round: XCUIElement { self.app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "Round: ")).firstMatch}
   
-  var firstRound: XCUIElement { self.app.staticTexts["Round: 1"]}
-  
-  var scoreAfterFirstRound: XCUIElement { self.app.staticTexts["Score: 100"]}
-  
-  var initialScore: XCUIElement { self.app.staticTexts["Score: 0"]}
+  var score: XCUIElement { self.app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "Score: ")).firstMatch}
   
   var startOverButton: XCUIElement { self.app.buttons["start over"] }
 

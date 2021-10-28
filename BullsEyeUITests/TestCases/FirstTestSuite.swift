@@ -79,11 +79,15 @@ class FirstTestSuite: TestCase {
       page.typeButton.tap()
       XCTAssertTrue(page.typeButton.isSelected, "После тапа на вкладку Type, активна вкладка Type")
       
-      XCTAssertTrue(page.secondRound.exists, "Round: 2")
-      XCTAssertTrue(page.scoreAfterFirstRound.exists, "Score: 100")
-      
+      let expectedRoundTwoText = "Round: 2"
+      let scoreAfterRound = "Score: 100"
+      XCTAssertEqual(page.round.label, expectedRoundTwoText,"Ожидали, текущее значение раунда '\(expectedRoundTwoText)'")
+      XCTAssertEqual(page.score.label, scoreAfterRound,"Ожидали, текущее значение раунда '\(scoreAfterRound)'")
+
       page.startOverButton.tap()
-      XCTAssertTrue(page.firstRound.exists, "Round: 1")
-      XCTAssertTrue(page.initialScore.exists, "Score: 0")
+      let expectedRoundOneText = "Round: 1"
+      let initialScore = "Score: 0"
+      XCTAssertEqual(page.round.label, expectedRoundOneText,"Ожидали, текущее значение раунда '\(expectedRoundOneText)'")
+      XCTAssertEqual(page.score.label, initialScore,"Ожидали, текущее значение раунда '\(initialScore)'")
     }
 }
